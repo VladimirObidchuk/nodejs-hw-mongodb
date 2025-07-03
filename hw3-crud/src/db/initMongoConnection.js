@@ -1,15 +1,12 @@
-import dotenv from 'dotenv';
-import 'dotenv/config';
 import mongoose from 'mongoose';
-
-dotenv.config();
+import { getEnvVariable } from '../utils/getEnvVar.js';
 
 export const initMongoDB = async () => {
   try {
-    const user = process.env.MONGODB_USER;
-    const pwd = process.env.MONGOBD_PASSWORD;
-    const url = process.env.MONGODB_URL;
-    const db = process.env.MONGODB_DB;
+    const user = getEnvVariable('MONGODB_USER');
+    const pwd = getEnvVariable('MONGOBD_PASSWORD');
+    const url = getEnvVariable('MONGODB_URL');
+    const db = getEnvVariable('MONGODB_DB');
     await mongoose.connect(
       `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`,
     );
