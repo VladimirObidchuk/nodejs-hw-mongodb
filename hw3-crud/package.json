@@ -4,7 +4,6 @@
   "main": "eslint.config.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
