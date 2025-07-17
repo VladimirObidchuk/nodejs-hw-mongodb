@@ -34,6 +34,6 @@ export const replaceContact = async (contactId, payload) => {
   );
   return {
     value: contact,
-    updatedExisting: true,
+    updatedExisting: contact.lastErrorObject.updatedExisting,
   };
 };
