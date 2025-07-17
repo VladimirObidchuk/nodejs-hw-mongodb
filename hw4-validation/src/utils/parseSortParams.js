@@ -1,6 +1,6 @@
 function parseSortBy(value) {
   if (typeof value === 'undefined') {
-    return 'name';
+    return '_id';
   }
   const keys = [
     '_id',
@@ -29,6 +29,7 @@ function parseSortOrder(value) {
 
 export function parseSortParams(query) {
   const { sortBy, sortOrder } = query;
+
   const parsedSortBy = parseSortBy(sortBy);
   const parsedSortOrder = parseSortOrder(sortOrder);
 
