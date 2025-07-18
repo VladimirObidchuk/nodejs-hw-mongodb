@@ -9,7 +9,7 @@ export function validateBody(shema) {
 
       next();
     } catch (error) {
-      const errors = error.details.map(details.map((detail) => detail.message));
+      const errors = error.details.map((detail) => detail.message);
       next(new createHttpRrror.BadRequest(errors));
     }
   };
