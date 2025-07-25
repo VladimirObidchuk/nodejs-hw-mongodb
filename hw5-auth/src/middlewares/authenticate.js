@@ -10,7 +10,6 @@ export async function authenticate(req, res, next) {
     throw new createHttpError.Unauthorized('Please provide access token');
   }
   const [bearer, accessToken] = authorization.split(' ', 2);
-  console.log(bearer, '&&', accessToken);
 
   if (bearer !== 'Bearer' || typeof accessToken !== 'string') {
     throw new createHttpError.Unauthorized('Please provide access token');
