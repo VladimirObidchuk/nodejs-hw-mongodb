@@ -3,7 +3,6 @@ import crypto from 'node:crypto';
 import bcrypt from 'bcrypt';
 import { User } from '../db/models/user.js';
 import { Session } from '../db/models/session.js';
-import { getEnvVariable } from '../utils/getEnvVar.js';
 
 export const registerUser = async (payload) => {
   const user = await User.findOne({ email: payload.email });
@@ -11,9 +10,10 @@ export const registerUser = async (payload) => {
   if (user !== null) {
     throw new createHttpError.Conflict('Email is already in use');
   }
+
   payload.password = await bcrypt.hash(payload.password, 10);
 
-  return UserCollection.create(payload);
+  return User.create(payload);
 };
 
 export async function loginUser(email, password) {
