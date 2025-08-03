@@ -55,7 +55,7 @@ export const createContactController = async (req, res) => {
 
   const contact = await createContact({
     ...req.body,
-    photo: `http://localhost:5010/photos/${req.file.filename}`, //: `http://localhost:5010/photos/${req.file.filename}`,
+    photo: result.secure_url, //: `http://localhost:5010/photos/${req.file.filename}`,
     userId: req.user.id,
   });
   res.status(201).json({
