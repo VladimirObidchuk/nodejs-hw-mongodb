@@ -11,13 +11,20 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5010"
+      "url": "http://127.0.0.1:5010"
+    },
+    {
+      "url": "https://contacts-t4m3.onrender.com"
     }
   ],
   "tags": [
     {
       "name": "Contacts",
       "description": "Operation with contacts"
+    },
+    {
+      "name": "Auth",
+      "description": "Operation width user"
     }
   ],
   "paths": {
@@ -705,6 +712,106 @@
           }
         }
       }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Create User",
+        "operationId": "postRegisterUseer",
+        "description": "Create User",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User name",
+                    "example": "Gilla Foval"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "User email",
+                    "example": "example@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User password"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create a User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully registered a user!"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/user"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict user email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Email is already in use"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -853,6 +960,43 @@
             "type": "string",
             "format": "date-time",
             "example": "2025-07-21T17:27:59.621+00:00"
+          }
+        }
+      },
+      "user": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "email",
+          "password",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User name",
+            "example": null
+          },
+          "email": {
+            "type": "string",
+            "description": "User email",
+            "example": "example@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$10$dG67jbLm5ktOx.ASxvGcnuOf/Zm4Hq95W8Lnj/zNzqf.yFUfEUEE2"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-07-21T17:27:59.621+00:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-07-21T17:27:59.621+00:0"
           }
         }
       }
