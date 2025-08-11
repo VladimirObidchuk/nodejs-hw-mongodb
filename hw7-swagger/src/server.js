@@ -15,6 +15,7 @@ import contactsRouter from './routers/contacts.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { authenticate } from './middlewares/authenticate.js';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 const PORT = getEnvVariable('PORT') || 5150;
 
@@ -36,6 +37,7 @@ export const setupServer = () => {
 
   app.use('/auth', authRouter);
   app.use('/contacts', authenticate, contactsRouter);
+  app.use('/api-docs', swaggerDocs());
 
   app.use(notFoundHandler);
 

@@ -14,7 +14,7 @@ function parseIsFavourite(value) {
     return undefined;
   }
   const parsedValue = JSON.parse(value);
-  console.log('🚀 ~ parseIsFavorite ~ parsedValue:', parsedValue);
+
   return parsedValue;
 }
 
