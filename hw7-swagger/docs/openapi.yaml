@@ -10,8 +10,9 @@ tags:
   - name: Contacts
     description: Operation with contacts
 servers:
-  - url: http://localhost:5010
-  - url: https://contacts-t4m3.onrender.com/
+  - url: http://127.0.0.1:5010
+  - url: https://contacts-t4m3.onrender.com
+
 paths:
   /contacts:
     get:
