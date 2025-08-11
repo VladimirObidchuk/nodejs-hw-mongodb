@@ -12,6 +12,9 @@
   "servers": [
     {
       "url": "http://localhost:5010"
+    },
+    {
+      "url": "https://contacts-t4m3.onrender.com/"
     }
   ],
   "tags": [
