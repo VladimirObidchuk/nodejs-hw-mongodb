@@ -120,7 +120,40 @@
                       "example": "Successfully found contacts!"
                     },
                     "data": {
-                      "type": "array"
+                      "contentSchema": {
+                        "type": "object",
+                        "required": [
+                          "contact",
+                          "page",
+                          "perPage",
+                          "total",
+                          "totalPage"
+                        ],
+                        "properties": {
+                          "contact": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/contact"
+                            }
+                          },
+                          "page": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "perPage": {
+                            "type": "number",
+                            "example": 10
+                          },
+                          "total": {
+                            "type": "number",
+                            "example": 100
+                          },
+                          "totalPage": {
+                            "type": "number",
+                            "example": 10
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -241,7 +274,7 @@
         }
       }
     },
-    "/{id}": {
+    "/contacts/{id}": {
       "get": {
         "tags": [
           "Contacts"
@@ -822,75 +855,6 @@
         "scheme": "bearer"
       }
     },
-    "responses": {
-      "401": {
-        "description": "Unauthorized error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "status",
-                "message"
-              ],
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 401
-                },
-                "message": {
-                  "type": "string",
-                  "example": "UnauthorizedError",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Access token expired"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "500": {
-        "description": "Internal server error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "status",
-                "message",
-                "data"
-              ],
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 500
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Internal Server Error"
-                },
-                "data": {
-                  "type": "object",
-                  "required": [
-                    "message"
-                  ],
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Something went wrong!"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "schemas": {
       "contact": {
         "type": "object",
@@ -999,6 +963,75 @@
             "type": "string",
             "format": "date-time",
             "example": "2025-07-21T17:27:59.621+00:0"
+          }
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "description": "Unauthorized error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 401
+                },
+                "message": {
+                  "type": "string",
+                  "example": "UnauthorizedError",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Access token expired"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 500
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Internal Server Error"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong!"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
