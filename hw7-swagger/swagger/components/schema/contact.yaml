@@ -38,6 +38,7 @@ properties:
     default: personal
   photo:
     type: string
+    format: binary
     description: Contact photo
     default: null
   userId:

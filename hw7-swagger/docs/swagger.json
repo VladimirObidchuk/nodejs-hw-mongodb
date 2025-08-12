@@ -31,7 +31,7 @@
     "/contacts": {
       "get": {
         "tags": [
-          "Contacnts"
+          "Contacts"
         ],
         "summary": "Get all contacts",
         "operationId": "getAllContacts",
@@ -45,7 +45,7 @@
           {
             "in": "query",
             "name": "page",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "number",
               "example": 1
@@ -54,7 +54,7 @@
           {
             "in": "query",
             "name": "perPage",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "number",
               "example": 10
@@ -137,7 +137,7 @@
       },
       "post": {
         "tags": [
-          "Contact"
+          "Contacts"
         ],
         "summary": "Create contact",
         "operationId": "createContact",
@@ -241,10 +241,10 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/{id}": {
       "get": {
         "tags": [
-          "Contacnts"
+          "Contacts"
         ],
         "summary": "Get  contacts by id",
         "operationId": "getContact",
@@ -328,7 +328,7 @@
       },
       "delete": {
         "tags": [
-          "Contacnts"
+          "Contacts"
         ],
         "summary": "Delete contacts by id",
         "operationId": "deleteContact",
@@ -412,7 +412,7 @@
       },
       "put": {
         "tags": [
-          "Contacnts"
+          "Contacts"
         ],
         "summary": "Replace contact information",
         "operationId": "postRreplaceContact",
@@ -577,7 +577,7 @@
       },
       "patch": {
         "tags": [
-          "Contacnts"
+          "Contacts"
         ],
         "summary": "Updata contact information",
         "operationId": "postUpdataContact",
@@ -603,13 +603,6 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "email",
-                  "contactType",
-                  "photo"
-                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -713,7 +706,7 @@
         }
       }
     },
-    "/auth/register": {
+    "/register": {
       "post": {
         "tags": [
           "Auth"
@@ -785,6 +778,12 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/401"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
           "409": {
             "description": "Conflict user email",
             "content": {
@@ -793,8 +792,7 @@
                   "type": "object",
                   "required": [
                     "status",
-                    "message",
-                    "data"
+                    "message"
                   ],
                   "properties": {
                     "status": {
@@ -809,6 +807,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -943,6 +944,7 @@
           },
           "photo": {
             "type": "string",
+            "format": "binary",
             "description": "Contact photo",
             "default": null
           },
