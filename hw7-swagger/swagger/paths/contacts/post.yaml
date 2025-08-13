@@ -15,7 +15,6 @@ requestBody:
           - phoneNumber
           - email
           - contactType
-          - photo
         properties:
           name:
             type: string
@@ -41,7 +40,7 @@ requestBody:
           photo:
             type: string
             description: Contact photo
-            default: null
+            format: binary
 responses:
   '201':
     description: Created a contact
