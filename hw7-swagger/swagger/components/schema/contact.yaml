@@ -6,7 +6,6 @@ required:
   - email
   - isFavourite
   - contactType
-  - photo
   - userId
   - createdAt
   - updatedAt
@@ -38,6 +37,7 @@ properties:
     default: personal
   photo:
     type: string
+    format: binary
     description: Contact photo
     default: null
   userId:

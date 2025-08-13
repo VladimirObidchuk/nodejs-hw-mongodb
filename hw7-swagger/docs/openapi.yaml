@@ -30,7 +30,7 @@ paths:
       $ref: '../swagger/paths/contacts/{id}/put.yaml'
     patch:
       $ref: '../swagger/paths/contacts/{id}/patch.yaml'
-  /auth/register:
+  /register:
     post:
       $ref: '../swagger/paths/auth/post.yaml'
 

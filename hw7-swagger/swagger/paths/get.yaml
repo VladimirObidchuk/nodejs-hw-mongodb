@@ -1,5 +1,5 @@
 tags:
-  - Contacnts
+  - Contacts
 summary: Get all contacts
 operationId: getAllContacts
 description: 'Get all contacts'
@@ -8,13 +8,13 @@ security:
 parameters:
   - in: query
     name: page
-    required: true
+    required: false
     schema:
       type: number
       example: 1
   - in: query
     name: perPage
-    required: true
+    required: false
     schema:
       type: number
       example: 10
@@ -62,7 +62,38 @@ responses:
               type: string
               example: Successfully found contacts!
             data:
-              type: array
+              type: object
+              required:
+                - contacts
+                - total
+                - page
+                - perPage
+                - totalPage
+                - hasNextPage
+                - hasPreviousPage
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    $ref: ../components/schema/contact.yaml
+                page:
+                  type: number
+                  example: 1
+                perPage:
+                  type: number
+                  example: 10
+                total:
+                  type: number
+                  example: 100
+                totalPage:
+                  type: number
+                  example: 10
+                hasNextPage:
+                  type: boolean
+                  example: false
+                hasPreviousPage:
+                  type: boolean
+                  example: false
   '401':
     $ref: ../components/responses/401.yaml
   '500':

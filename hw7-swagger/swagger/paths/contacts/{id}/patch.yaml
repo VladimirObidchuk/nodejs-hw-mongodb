@@ -1,5 +1,5 @@
 tags:
-  - Contacnts
+  - Contacts
 summary: Updata contact information
 operationId: postUpdataContact
 description: Updata contact information
@@ -18,12 +18,6 @@ requestBody:
     multipart/form-data:
       schema:
         type: object
-        required:
-          - name
-          - phoneNumber
-          - email
-          - contactType
-          - photo
         properties:
           name:
             type: string
