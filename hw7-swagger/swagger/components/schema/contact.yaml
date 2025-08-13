@@ -6,7 +6,6 @@ required:
   - email
   - isFavourite
   - contactType
-  - photo
   - userId
   - createdAt
   - updatedAt
