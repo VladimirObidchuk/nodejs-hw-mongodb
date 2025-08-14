@@ -482,8 +482,7 @@
                   "name",
                   "phoneNumber",
                   "email",
-                  "contactType",
-                  "photo"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -518,6 +517,7 @@
                   },
                   "photo": {
                     "type": "string",
+                    "format": "binary",
                     "description": "Contact photo",
                     "default": null
                   }
@@ -676,6 +676,7 @@
                   },
                   "photo": {
                     "type": "string",
+                    "format": "binary",
                     "description": "Contact photo",
                     "default": null
                   }
