@@ -42,6 +42,7 @@ requestBody:
             default: personal
           photo:
             type: string
+            format: binary
             description: Contact photo
             default: null
 responses:
